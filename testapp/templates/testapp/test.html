@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->	
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style type="text/css">
+	
+#firstpart {
+height: 300px;
+}
+
+#lastpart {
+height: 300px;
+}
+
+
+#midpart {
+	height: 250px;
+
+   padding: 50px;
+    display: none;
+
+}
+
+
+h3 {
+margin  : 0 auto;
+}
+
+ul {
+list-style-type: none;
+
+}
+
+#note {
+display: ;
+}
+
+
+#tab {
+   padding: 50px;
+   display: none;
+}
+
+#searching {
+width : 50%;
+float : right;
+}
+
+#demo {
+width : 30%;
+float : left;
+}
+
+#getdata {
+width : 70%;
+float : right;
+
+}
+
+#Success_Model {
+
+
+}
+
+
+#success_m {
+background-color: #6CBF68;
+color : white;
+border-radius: 10px;
+}
+
+</style>
+
+<script type="text/javascript">
+/*	
+$(document).ready(function(){
+    $("button").click(function(){
+        $("#bgroup").fadeToggle(3000);
+    });
+});
+*/
+
+</script>
+
+
+<script>
+
+var i=0;
+var user = {};
+var entry = new Array();
+var indexvalue="";
+
+
+function store() {
+
+	var username = document.getElementById('uname').value;
+	var useremail = document.getElementById('email').value;
+	var useradd = document.getElementById('address').value;
+	var userb_group = document.getElementById('b_group').value;
+	var user_mob = document.getElementById('mnumber').value; 
+
+	user={	name:username, 
+					email:useremail, 
+					address:useradd, 
+					b_group:userb_group, 
+					mobile:user_mob 
+				}; 
+
+	entry.push(user);
+
+create();
+}
+ 
+function create() {
+
+//Delete
+for (var z = 1; z < entry.length; z++) {  
+	document.getElementById("record").deleteRow(-1);
+}
+
+
+//insert
+for(i=0; i<entry.length; ++i) {
+
+	var x = i;
+  var table = document.getElementById("record");
+  row = table.insertRow(-1);
+
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+	var cell3 = row.insertCell(2);
+  var cell4 = row.insertCell(3);
+  var cell5 = row.insertCell(4);
+  var cell6 = row.insertCell(5);	
+
+    cell1.innerHTML = ++x;
+    cell2.innerHTML = entry[i].name;
+    cell3.innerHTML = entry[i].email;
+    cell4.innerHTML = entry[i].mobile;
+    cell5.innerHTML = entry[i].address;
+    cell6.innerHTML = entry[i].b_group;
+	}
+}
+	
+
+	
+function search_by() {
+	indexvalue = document.getElementById("demo").value;
+
+return;
+}
+
+
+function search_data() {
+var x = indexvalue;
+
+if(x=="") {
+	alert("Please select 'Search By' option");
+
+}
+
+
+
+    var input, filter, i, j;
+    var table, tr, td;
+
+    input = document.getElementById("getdata");
+    filter = input.value.toUpperCase();		
+ 
+    table = document.getElementById("record");
+ 
+    tr = table.getElementsByTagName("tr");
+
+
+  //  td = tr[i].getElementsByTagName("td")[1];
+   
+    for (i = 0; i < tr.length; i++) {
+
+    td = tr[i].getElementsByTagName("td")[x];
+
+if(td)
+{
+	if (td.innerHTML.toUpperCase().indexOf(filter) > -1) 
+	{
+		tr[i].style.display = "";
+  } 
+  else {
+  	tr[i].style.display = "none";
+  }
+}
+}
+}		
+
+
+function validations() {
+
+var x = emailvalid();
+
+if(x==true) {
+
+	$(document).ready(function(){ $("#submit_tab").click(function(){  $("#tab").slideDown(1000);  }); });
+	store();
+}
+else
+	window.alert("Error occur");
+
+}
+
+function emailvalid() {
+    var x = document.forms["reg_form"]["email"].value;
+    var atpos = x.indexOf("@");
+    var dotpos = x.lastIndexOf(".");
+
+    if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length) {
+        window.alert("Not a valid e-mail address");
+        return false;
+    }
+    else
+    		return true;
+}
+ 
+
+
+//window.setTimeout(function() {     $(".alert").fadeTo(500, 0).slideUp(500, function(){  $(this).remove();   });  	    }, 4000);
+
+
+
+$(document).ready(function() {  $("#midpart").slideDown(2000);  });
+
+
+$(document).ready(function(){ $("#submit_tab").click(function(){  $("#tab").slideDown(1000);  }); });
+
+
+$('#myModel').model('hide');
+
+</script>
+<style>
+
+ .left 
+ {  position: absolute; 
+    top: 0px; 
+    left: 0px; 
+    width: 50%; 
+    height: 100%; 	
+		float: left;
+}
+ .left:hover
+ {  position: absolute; 
+    top: 0px; 
+    left: 0px; 
+    width: 50%; 
+    height: 100%; 	
+		float: left;
+	}
+
+
+.right {
+    position: absolute; 
+    top: 0px;
+    left: 50%; 
+    width:50%; 
+    height: 100%;  
+    float : left;
+}
+
+
+</style>
+
+</head>
+<body>
+
+
+<div id="firstpart" class="col-md-4 "> 
+
+</div>
+
+	<div id="midpart" class="form-group text-center col-md-4">
+		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">	  Register Here ! 		</button>
+	</div>
+
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">REGISTRATION FORM</h4>
+      </div>
+      <div class="modal-body">
+
+<form id=reg_form  method="post" >
+<ul class="form">
+
+	<li class="form-group" id="r1"> 
+		<label for="name">Name</label> 					
+		<input class="form-control" id="uname" type="text" name="uname" placeholder="user name"> 
+	</li>
+	<li class="form-group" id=r2> 
+		<label for="email">E-mail</label> 				
+		<input class="form-control" id="email" type="email" name="email"  placeholder="abc@mail.com" >	
+	</li>
+	<li class="form-group" id=r3> 
+		<label for="address">Address</label> 		
+		<input class="form-control" id="address" type="text" name="address" placeholder="Address"/>	
+	</li>
+
+  <li class="form-group" id=r4> 
+  	<label for="mnumber">Mobile Number</label>
+		<input class="form-control" id="mnumber" max="10" type="number" name="mnumber"  placeholder="Enter Mobile No. without any code">
+		</li>	
+<li class="form-group">
+	 	<label for="b_group">Blood Group</label> 
+  	<select name="b_group" id="b_group" class="btn btn-default">
+  	  <option value="A +ve">A +ve</option>
+  	  <option value="A -ve">A -ve</option>
+  	  <option value="B +ve">B +ve</option>
+  	  <option value="B -ve">B -ve</option>
+  	  <option value="AB +ve">AB +ve</option>
+ 	   	<option value="AB -ve">AB -ve</option>
+ 	   	<option value="O +ve" selected="">O +ve</option>
+ 	   	<option value="O -ve">O -ve</option>
+  	</select>				
+	</li>
+</ul>
+</form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-success" id="submit_tab" onclick="validations()" data-dismiss="modal" >Submit</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+</div>
+
+<!--successfully registered-->
+	<div class="modal fade" id="Success_Modal" tabindex="	-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div id="success_m" class="modal-body">
+     <h1 style="text-align:center"> <strong> Successfully</strong> Registered ! </h1>
+
+      </div>
+      </div>
+      </div>
+      </div>
+
+<div id="lastpart" class="col-md-4">
+</div>
+
+<div class="table">
+
+<div class="col-md-2" >	
+
+</div>
+
+<div id="tab" class="col-md-8" >	
+
+<div id="searching" class="form-group">
+
+<select name="demo"  class="form-control" id="demo" onchange="search_by()">
+    <option value="" selected >Search By</option>
+    <option value="0">Serial Number</option>
+    <option value="1">Name</option>
+    <option value="2">E-mail</option>
+    <option value="3">Mobile</1option>
+    <option value="4">Address</option>
+    <option value="5">Blood Group</option>
+</select>
+
+<input class ="form-control" type="text" id="getdata" onkeyup="search_data()"  placeholder="search here !"> 
+</div>
+
+
+<table class="table table-hover table-bordered"  id="record">
+<thead>
+	<tr>
+		<th>Sr.no.</th>		
+		<th>Name</th>
+		<th>E-mail</th>
+		<th>Mobile</th>
+		<th>Address</th>
+		<th>Blood Group</th>
+</tr>
+</thead>
+
+</table>
+
+</div>
+
+<div class="col-md-2">   </div>
+</div>
+
+
+
+</body>
+</html>
